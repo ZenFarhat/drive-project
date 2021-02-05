@@ -1,9 +1,17 @@
 import "./App.css";
+import Header from "./components/Header/Index";
 
 function App() {
+  // authentication
+
   return (
     <div className='App'>
-      <h1>What's up clever programmer Fam :rocket:</h1>
+      <Header />
+      {/* auth=true 
+      sidebar
+      filesView
+      SideIcons*/}
+      {/* no auth: log in */}
     </div>
   );
 }
