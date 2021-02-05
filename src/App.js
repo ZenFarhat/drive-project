@@ -1,5 +1,6 @@
 import "./App.css";
 import Header from "./components/Header/Index";
+import Sidebar from './components/sidebar/Index'
 import {useState} from 'react'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
   return (
     <div className='App'>
       <Header userPhoto={user.photoURL} />
+      <Sidebar/>
       {/* auth=true 
       sidebar
       filesView
