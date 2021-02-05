@@ -7,7 +7,7 @@ import AppsIcon from "@material-ui/icons/Apps";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import SettingsIcon from "@material-ui/icons/Settings";
 
-const Index = () => {
+const Index = ({ userPhoto }) => {
   return (
     <div className='header'>
       <div className='header__logo'>
@@ -27,7 +27,7 @@ const Index = () => {
           <SettingsIcon />
         </span>
         <AppsIcon />
-        <img src='' alt='user-profile' />
+        <img src={userPhoto} alt='user-profile' />
       </div>
     </div>
   );

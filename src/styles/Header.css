@@ -13,6 +13,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  width: 10%;
 }
 
 .header__logo > img {
@@ -24,17 +25,19 @@
   color: gray;
   font-size: 20px;
   font-weight: 500;
-  margin-left: 16px;
+  margin-left: 1rem;
 }
 
 .header__searchContainer {
   display: flex;
   flex: 1;
   align-items: center;
+  width: 100%;
   padding: 8px;
 }
 
 .header__searchBar {
+  display: flex;
   width: 45%;
   height: 120%;
   border-radius: 6px;
@@ -53,6 +56,8 @@
   height: 60%;
   font-size: 1rem;
   color: lightgray;
+  border: none;
+  align-items: center;
   background: none;
   margin-left: 12px;
 }
