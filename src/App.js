@@ -3,24 +3,39 @@ import Header from "./components/Header/Index";
 import Sidebar from "./components/sidebar/Index";
 import { useState } from "react";
 import FilesView from "./components/filesView/FilesView";
+import SideIcons from "./components/sideIcons/index";
+import DriveLogo from "./media/google-drive-icon.png";
+import { auth, provider } from "./firebase";
 
 function App() {
-  const [user, setUser] = useState({
-    displayName: "Zen F",
-    email: "Zeinfarhat6@gmail.com",
-    emailVerified: true,
-    phoneNumber: null,
-    photoURL: "https://img-authors.flaticon.com/google.jpg",
-  });
+  const [user, setUser] = useState();
   // authentication
+  const handleLogin = () => {
+    if (!user) {
+      auth.signInWithPopup(provider).then((result) => {
+        setUser(result.user);
+      });
+    }
+  };
 
   return (
     <div className='App'>
-      <Header userPhoto={user.photoURL} />
-      <div className='app__main'>
-        <Sidebar />
-        <FilesView />
-      </div>
+      {user ? (
+        <>
+          <Header userPhoto={user.photoURL} />
+          <div className='app__main'>
+            <Sidebar />
+            <FilesView />
+            <SideIcons />
+          </div>
+        </>
+      ) : (
+        <div className='app__login'>
+          <img src={DriveLogo} alt='One Drive' />
+          <button onClick={handleLogin}>Log in to One Drive</button>
+        </div>
+      )}
+
       {/* auth=true 
       sidebar
       filesView

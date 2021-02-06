@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { db } from "../../firebase";
-import FileItem from "./FileItem";
+import "../../styles/FilesView.css";
 
-function FilesView() {
+import FileItem from "./FileItem";
+import FileCard from "./FileCard";
+
+import { db } from "../../firebase";
+
+const FilesView = () => {
   const [files, setFiles] = useState([]);
 
   useEffect(() => {
@@ -10,22 +14,28 @@ function FilesView() {
       setFiles(
         snapshot.docs.map((doc) => ({
           id: doc.id,
-          item: doc.data,
+          item: doc.data(),
         }))
       );
     });
   }, []);
 
+  console.log(files);
+
   return (
     <div className='fileView'>
-      <div className='fileView__row'></div>
-      <div className='filesView__titles'>
+      <div className='fileView__row'>
+        {files.slice(0, 5).map(({ id, item }) => (
+          <FileCard name={item.caption} />
+        ))}
+      </div>
+      <div className='fileView__titles'>
         <div className='fileView__titles--left'>
           <p>Name</p>
         </div>
         <div className='fileView__titles--right'>
-          <p>Last Modified</p>
-          <p>File(s) Size</p>
+          <p>Last modified</p>
+          <p>File size</p>
         </div>
       </div>
       {files.map(({ id, item }) => (
@@ -39,6 +49,6 @@ function FilesView() {
       ))}
     </div>
   );
-}
+};
 
 export default FilesView;
